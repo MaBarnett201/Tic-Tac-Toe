@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>
+            Tic Tac Toe
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <style>
+        h1, h3{
+            text-align:center
+        }
+
+        .board{
+            border:5px black solid;    
+            width: 90%;
+            margin:auto;
+        }
+    .row{
+        height: 150px;
+        display:flex
+    }
+
+.box{
+    width:33.33%;
+    text-align:center;
+    font-size: 50px;
+}
+
+    .row-1, .row-2{
+        border-bottom:5px black solid;
+    }
+
+    .col-1, .col-2{
+        border-right:5px black solid;
+    }
+    </style>
+    <body>
+        <header>
+        <h1>TIC-TAC-TOE</h1>
+        <h3>Player 1 Score: <span id="p1-score">0</span></h3>
+        <h3>Player 2 Score: <span id="p1-score">0</span></h3>
+        <h3>Tie:<span id="tie">0</span></h3>
+        <h3>Turn:<span id="turn">1</span></h3>
+        </header>
+        <div class="board">
+        <div class="row row-1">
+            <div class="box col-1" id="1"></div>
+            <div class="box col-2" id="2"></div>
+            <div class="box col-3" id="3"></div>
+        </div>
+        <div class="row row-2">
+            <div class="box col-1" id="4"></div>
+            <div class="box col-2" id="5"></div>
+            <div class="box col-3" id="6"></div>
+        </div>
+        <div class="row row-3">
+            <div class="box col-1" id="7"></div>
+            <div class="box col-2" id="8"></div>
+            <div class="box col-3" id="9"></div>
+        </div>    
+        </div>
+    </body>
+    <script>
+        var p1Score = 0;
+        var p2Score = 0;
+        var tie = 0;
+        var turn = 1;
+
+
+        function checkWin(){
+            if ($(".row-1 .box.X").length === 3
+            || $(".row-2 .box.X").length === 3
+            || $(".row-3 .box.X").length === 3
+            || $(".col-1.X").length === 3
+            || $(".col-2.X").length === 3
+            || $(".col-3.X").length === 3
+            || $(".row-1 .box.O").length === 3
+            || $(".row-2 .box.O").length === 3
+            || $(".row-3 .box.O").length === 3
+            || $(".col-1.O").length === 3
+            || $(".col-2.O").length === 3
+            || $(".col-3.O").length === 3
+            || $("#1").hasClass("X")
+            &&$("#5").hasClass("X")
+            &&$("#9").hasClass("X")
+            || $("#3").hasClass("X")
+            &&$("#5").hasClass("X")
+            &&$("#7").hasClass("X")
+            || $("#1").hasClass("O")
+            &&$("#5").hasClass("O")
+            &&$("#9").hasClass("O")
+            || $("#3").hasClass("O")
+            &&$("#5").hasClass("O")
+            &&$("#7").hasClass("O")
+            ){
+                console.log("Working")
+            }
+        }
+
+
+    $(".box").click(function(){
+        if (turn === 1){
+            $(this).text("X")
+            $(this).addClass("X")
+            turn = 2;
+            $("#turn").text(2)
+            checkWin();
+        }
+        else{
+            $(this).text("O")
+            $(this).addClass("O")
+            turn = 1;
+            $("#turn").text(1)
+            checkWin();
+        }
+    })
+    </script>
+</html>
