@@ -39,7 +39,7 @@
         <h1>TIC-TAC-TOE</h1>
         <h3>Player 1 Score:<span id="p1-score">0</span></h3>
         <h3>Player 2 Score:<span id="p2-score">0</span></h3>
-        <h3>Tie:<span id="tie">0</span></h3>
+        <h3>Tie:<span id="tie">0</span><button>Click If Tie</button></h3>
         <h3>Turn:<span id="turn">1</span></h3>
         </header>
         <div class="board">
@@ -113,9 +113,10 @@
             if(checkWinX()){
                 p1Score++
                 $("#p1-score").text(p1Score)
+                clear()
             }
         }
-        else{
+        else {
             $(this).text("O")
             $(this).addClass("O")
             turn = 1;
@@ -123,8 +124,28 @@
             if(checkWinO()){
                 p2Score++
                 $("#p2-score").text(p2Score)
+                clear()
             }
         }
+    })
+    
+        function clear(){
+            $(".box").empty();
+            $(".X").removeClass("X")
+            $(".O").removeClass("O")
+        }
+
+    function checkTie(){
+        if($(".X").length + $(".O").length === 9){
+            console.log("Winner")
+        }
+    }
+
+    $("button").click(function(){
+        $(".box").empty()
+        tie++
+        $("#tie").text(tie)
+
     })
     </script>
 </html>
